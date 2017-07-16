@@ -1,0 +1,20 @@
+<div class="matrix">
+  {{#each matrix as |element index|}}
+    <p>
+      {{counter-component
+        matrix=matrix
+        counter=index
+        boom="boom"
+        updateMatrix="updateMatrix"}}
+      </p>
+  {{/each}}
+</div>
+
+<div class="control-panel">
+  <div class="clicks">
+    {{clicks}}
+  </div>
+  <div class="message">
+    {{message}}
+  </div>
+</div>

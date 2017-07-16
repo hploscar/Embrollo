@@ -40,5 +40,8 @@
   "engines": {
     "node": ">= 4"
   },
-  "private": true
+  "private": true,
+  "dependencies": {
+    "animate.css": "^3.5.2"
+  }
 }

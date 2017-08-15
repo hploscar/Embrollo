@@ -1,13 +1,17 @@
 <div class="matrix">
-  {{#each matrix as |element index|}}
-    <p>
-      {{counter-component
-        matrix=matrix
-        counter=index
-        boom="boom"
-        updateMatrix="updateMatrix"}}
-      </p>
-  {{/each}}
+  {{board-component
+    matrix=matrix
+    boom=boom
+    counterSize=counterSize
+    updateMatrix=updateMatrix}}
+  <!-- {{#each matrix as |element index|}}
+    {{counter-component
+      matrix=matrix
+      size=counterSize
+      counter=index
+      boom="boom"
+      updateMatrix="updateMatrix"}}
+  {{/each}} -->
 </div>
 
 <div class="control-panel">

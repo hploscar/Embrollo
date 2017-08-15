@@ -16,6 +16,12 @@ export default Ember.Component.extend({
     }
   }),
   didInsertElement() {
+    // let size = Ember.$(document).width() / 8
+    // if (size < 50) { size = 50 }
+    // width = Ember.$(document).width() / width
+    console.log(this.get('size'))
+    this.$(`[ref=${this.get('counter')}]`).css("width", this.get('size'))
+    this.$(`[ref=${this.get('counter')}]`).css("height", this.get('size'))
     this.set('value', this.get('matrix')[this.get('counter')].value)
     this.$(`[ref=${this.get('counter')}]`).addClass(`color-${this.get('value')}`)
   },

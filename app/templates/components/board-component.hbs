@@ -1,0 +1,8 @@
+{{#each matrix as |element index|}}
+  {{counter-component
+    matrix=matrix
+    size=counterSize
+    counter=index
+    boom="boom"
+    updateMatrix="updateMatrix"}}
+{{/each}}

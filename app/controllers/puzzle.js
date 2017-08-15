@@ -1,23 +1,67 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  columns: 6,
+  rows: 7,
   clicks: 12,
   message: "",
   matrix: function() {
-    return Array(100).fill(0).map(function() {
+    let columns = Math.floor(Ember.$('.matrix').width() / 54)
+    let c = Ember.$('.matrix').height() % 54
+    console.log("column diff: ", c)
+    // let rows = this.get('rows')
+    let rows = Math.floor(Ember.$('.matrix').height() / 60)
+    let r = Ember.$('.matrix').height() % 54
+    console.log("row diff: ", r)
+    this.set('counterSize', Math.floor(Ember.$('.matrix').width() / columns))
+    this.set('columns', columns)
+    // this.set('rows', rows)
+    console.log("Columns: ", columns)
+    console.log("Rows: ", rows)
+    // let matrix = Array(this.get('columns') * this.get('rows')).fill(0)
+    // let matrix = Array(this.get('rows') + 1).fill([])
+    let matrix = []
+    for (let i = 0; i < rows; i++) {
+      let row = []
+      for (let j = 0; j<=columns; j++) {
+        row.pushObject({value: Math.floor(Math.random()*3)})
+      }
+      matrix[i] = row
+    }
+
+    // for (const row of matrix) {
+    //   row.pushObject({value: "AS"})
+    //   // for (let j = 0; j <= columns; j++) {
+    //     // matrix[i].pushObject(Ember.Object.create({ col: j, value: Math.floor(Math.random()*3)}))
+    //     // row.pushObject(Ember.Object.create({value: Math.floor(Math.random()*3)}))
+    //   // }
+    // }
+    console.log(matrix)
+    console.log(this.get('counterSize'))
+    console.log(rows)
+
+
+    return Array(this.get('columns') * this.get('rows')).fill(0).map(function() {
       return Ember.Object.create({value: Math.floor(Math.random()*3)})
     })
   }.property(),
 
-  matrixObserver: Ember.observer('matrix', (data) => {
-    // console.log("Matrix Change in Controller")
-  }),
+  // init() {
+  //   let width = Ember.$(document).width()
+  //   let columns = 0
+  //   this.set('counterSize', width / 20)
+  //   this.set('width', this.get('counterSize') * 10)
+  // //       size
+  // //   // while (columns < 8 || columns > 8) {
+  // //   //   size = 80
+  // //   columns = width / size
+  // //   //   size--
+  // //   // }
+  // },
 
   spreadTopTiles(matrix, i) {
     let self = this
     Ember.run.later((function() {
-      console.log(matrix[i].value)
-      console.log(i)
       if (matrix[i].value > 0) {
         matrix[i] = Ember.Object.create({value: matrix[i].value + 1})
         self.set('matrix', matrix)

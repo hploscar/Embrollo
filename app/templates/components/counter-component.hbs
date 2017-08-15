@@ -1,3 +1,5 @@
 <div class="counter animated flipInX" ref={{counter}} onClick={{action "push"}}>
-  {{value}}
+  {{#if value}}
+    {{value}}
+  {{/if}}
 </div>

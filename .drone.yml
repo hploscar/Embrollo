@@ -1,0 +1,15 @@
+cache:
+  image: drillster/drone-volume-cache
+  restore: true
+  mount:
+    - ./node_modules
+  volumes:
+    - /tmp/cache:/cache
+
+pipeline:
+  build:
+    # parallel: false
+    image: node:7.0
+    commands:
+      - npm install
+      - node_modules/ember-cli/bin/ember server

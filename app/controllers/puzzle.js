@@ -7,17 +7,13 @@ export default Ember.Controller.extend({
   message: "",
   matrix: function() {
     let columns = Math.floor(Ember.$('.matrix').width() / 54)
-    let c = Ember.$('.matrix').height() % 54
-    console.log("column diff: ", c)
+    // let c = Ember.$('.matrix').height() % 54
     // let rows = this.get('rows')
     let rows = Math.floor(Ember.$('.matrix').height() / 60)
-    let r = Ember.$('.matrix').height() % 54
-    console.log("row diff: ", r)
+    // let r = Ember.$('.matrix').height() % 54
     this.set('counterSize', Math.floor(Ember.$('.matrix').width() / columns))
     this.set('columns', columns)
     // this.set('rows', rows)
-    console.log("Columns: ", columns)
-    console.log("Rows: ", rows)
     // let matrix = Array(this.get('columns') * this.get('rows')).fill(0)
     // let matrix = Array(this.get('rows') + 1).fill([])
     let matrix = []
@@ -36,10 +32,6 @@ export default Ember.Controller.extend({
     //     // row.pushObject(Ember.Object.create({value: Math.floor(Math.random()*3)}))
     //   // }
     // }
-    console.log(matrix)
-    console.log(this.get('counterSize'))
-    console.log(rows)
-
 
     return Array(this.get('columns') * this.get('rows')).fill(0).map(function() {
       return Ember.Object.create({value: Math.floor(Math.random()*3)})
